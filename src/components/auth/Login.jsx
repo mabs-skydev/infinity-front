@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
+import { loginUser } from '../../services/userService';
 
 const Login = ({registerClicked}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const login = e => {
+    const login = async e => {
         e.preventDefault();
-        console.log(email, password);
+        await loginUser({
+            email,
+            password
+        });
+
+        window.location = "/";
     }
 
     return (

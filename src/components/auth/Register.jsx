@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { registerUser } from "../../services/userService";
 
 const Register = ({registerClicked}) => {
 
@@ -6,9 +7,16 @@ const Register = ({registerClicked}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const register = e => {
+    const register = async e => {
         e.preventDefault();
-        console.log(name, email, password);
+        
+        await registerUser({
+            name,
+            email,
+            password
+        });
+
+        window.location = "/";
     }
     
     return (

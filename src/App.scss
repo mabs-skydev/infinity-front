@@ -191,4 +191,24 @@ textarea {
 
 .menu {
 	margin-right: 3rem;
+
+	&__name {
+		margin-right: 1rem;
+	}
+
+	&__logout {
+		cursor: pointer;
+		border: 1px solid var(--color-white);
+		outline: none;
+		color: var(--color-white);
+		background-color: inherit;
+		padding: .8rem;
+		border-radius: 10rem;
+		transition: transform .3s;
+
+		&:hover {
+			background-color: var(--color-red);
+			transform: scale(1.02);
+		}
+	}
 }
