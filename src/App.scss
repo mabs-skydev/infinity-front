@@ -26,6 +26,10 @@ body {
 	background-color: var(--color-grey);
 }
 
+.App {
+	position: relative;
+}
+
 .landing-page {
 	position: relative;
 	background-color: turquoise;
@@ -114,6 +118,10 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 98%;
 }
 
 .footer {
@@ -130,7 +138,7 @@ body {
 
 .container {
 	max-width: 80rem;
-	margin: 3rem auto;
+	margin: 5rem auto;
 	padding: 3rem;
 	display: flex;
 	flex-direction: column;
@@ -179,4 +187,8 @@ textarea {
 		margin: 1rem 0;
 		flex: 1;
 	}
+}
+
+.menu {
+	margin-right: 3rem;
 }
