@@ -29,7 +29,10 @@ const Post = ({post, onAddComment, onDeletePost}) => {
                     <TextArea placeholder="Write a comment..." onSubmit={addComment} />
 
                     <div className="comments">
-                        <div className="comments__counter"> {`${post.comments? post.comments.length : 0} comments`} </div>
+                        <div className="comments__info">
+                            <span className="comments__counter"> {`${post.comments? post.comments.length : 0} comments`} </span>
+                            <span className="comments__posted-at">{post.created_at}</span>
+                        </div>
                         {post.comments && post.comments.map(comment => <Comment comment={comment} key={comment.id} />)}
                     </div>
                 </div>

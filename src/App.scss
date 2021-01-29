@@ -218,6 +218,12 @@ textarea {
 	}
 }
 
+.comments__info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .menu {
 	margin-right: 3rem;
 
