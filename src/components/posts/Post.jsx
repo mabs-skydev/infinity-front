@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from './Comment';
 import TextArea from './../common/TextArea';
 
-const Post = ({post}) => {
+const Post = ({post, onAddPost}) => {
     const addComment = text => {
         console.log("add comment:", post.id, text)
     }

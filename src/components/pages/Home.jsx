@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navigation from './../layouts/Navigation';
 import Footer from './../layouts/Footer';
 import List from './../posts/List';
+import { loadPosts, addPost } from './../../store/entities/posts';
+import { connect } from 'react-redux';
 
 class Home extends Component {
     state = { 
@@ -72,24 +74,41 @@ class Home extends Component {
                 }
             }
         ]
-     }
+    }
+
+    handleAddPost = body => {
+        console.log("body", body);
+        this.props.addPost(body);
+    }
+
+    componentDidMount() {
+        this.props.loadPosts();
+    }
+
     render() {
-        const {posts} = this.state;
+        const {posts} = this.props;
         
         return (
             <>
                 <Navigation />
 
                 <div className="container">
-                    <List posts={posts} />
+                    <List posts={posts} onAddPost={this.handleAddPost} />
                 </div>
 
                 <Footer />
-
-                
             </>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    posts: state.entities.posts.list,
+});
+
+const mapDispatchToProps = dispatch => ({
+    loadPosts: () => { dispatch(loadPosts()) },
+    addPost: body => { dispatch(addPost(body)) }
+});
  
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
