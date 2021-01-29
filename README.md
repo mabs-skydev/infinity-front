@@ -3,7 +3,7 @@
 - exécutez la commande: npm install (ou bien: yarn install)
 - démarrer le serveur: npm start (ou bien: yarn start)
 
-### Bibliothéque utiliser
+### Bibliothèques utilisées
 
 - sass
 - axios
