@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import TextArea from './../common/TextArea';
 
-const List = ({posts, onAddPost}) => {
+const List = ({posts, onAddPost, onAddComment}) => {
     const createPost = text => {
        onAddPost(text)
     }
@@ -15,7 +15,7 @@ const List = ({posts, onAddPost}) => {
                     <TextArea placeholder="Whats in your mind..." onSubmit={createPost} onAddPost={onAddPost} />
                 </div>
             </div>
-            {posts.map(post => <Post post={post} key={post.id} />)}
+            {posts.map(post => <Post post={post} onAddComment={onAddComment} key={post.id} />)}
         </>
     );
 }

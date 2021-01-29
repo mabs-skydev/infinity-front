@@ -2,7 +2,6 @@ import axios from "axios";
 import * as actions from "../entities/api";
 
 export default ({ dispatch, getState }) => next => async action => {
-  console.log("middleware", action);
   if (action.type !== actions.apiCallBegan.type) return next(action);
 
   const { url, method, data, onSuccess, onError, onLoading } = action.payload;

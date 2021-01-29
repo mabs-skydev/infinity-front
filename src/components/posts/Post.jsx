@@ -2,9 +2,9 @@ import React from 'react';
 import Comment from './Comment';
 import TextArea from './../common/TextArea';
 
-const Post = ({post, onAddPost}) => {
+const Post = ({post, onAddComment}) => {
     const addComment = text => {
-        console.log("add comment:", post.id, text)
+        onAddComment(post.id, text);
     }
 
     return (

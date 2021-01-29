@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './../layouts/Navigation';
 import Footer from './../layouts/Footer';
 import List from './../posts/List';
-import { loadPosts, addPost } from './../../store/entities/posts';
+import { loadPosts, addPost, addComment } from './../../store/entities/posts';
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -77,8 +77,11 @@ class Home extends Component {
     }
 
     handleAddPost = body => {
-        console.log("body", body);
         this.props.addPost(body);
+    }
+
+    handleAddComment = (id, text) => {
+        this.props.addComment(id, text);
     }
 
     componentDidMount() {
@@ -93,7 +96,7 @@ class Home extends Component {
                 <Navigation />
 
                 <div className="container">
-                    <List posts={posts} onAddPost={this.handleAddPost} />
+                    <List posts={posts} onAddPost={this.handleAddPost} onAddComment={this.handleAddComment} />
                 </div>
 
                 <Footer />
@@ -108,7 +111,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     loadPosts: () => { dispatch(loadPosts()) },
-    addPost: body => { dispatch(addPost(body)) }
+    addPost: body => { dispatch(addPost(body)) },
+    addComment: (id, text) => { dispatch(addComment(id, text)) }
 });
  
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

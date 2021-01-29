@@ -18,6 +18,15 @@ const slice = createSlice({
       posts.list.push(action.payload.post)
     },
 
+    commentAdded: (posts, action) => {
+      const index = posts.list.findIndex(({id}) => id == action.payload.comment.post_id)
+      let post = posts.list[index];
+      let comments = post.comments || [];
+      comments.push(action.payload.comment);
+      post.comments = comments;
+      posts.list[index] = post;
+    },
+
     postRequest: (posts, action) => {
       posts.loading = true;
     },
@@ -46,9 +55,18 @@ export const addPost = text =>
     onSuccess: postCreated.type,
   });
 
+export const addComment = (id, text) =>
+  apiCallBegan({
+    url: `${url}/${id}/comment`,
+    method: "post",
+    data: { body: text },
+    onSuccess: commentAdded.type,
+  });
+
 const {
   postRequest,
   postCreated,
+  commentAdded,
   postsLoaded,
   postRequestFailed,
 } = slice.actions;
