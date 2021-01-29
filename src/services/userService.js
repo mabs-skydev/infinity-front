@@ -14,9 +14,19 @@ export async function loginUser(user) {
 
 export function logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     window.location = "/login";
 }
 
 export function getCurrentUser() {
     return localStorage.getItem('token');
+}
+
+export async function getUserInfo() {
+    if (!localStorage.getItem('user')) {
+        const {data} = await axios.get(`${apiEndPoint}/user`, {
+                                headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
+                            });
+        localStorage.setItem('user', data.user.id);
+    }
 }

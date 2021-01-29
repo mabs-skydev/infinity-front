@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actions from "../entities/api";
 
-export default ({ dispatch, getState }) => next => async action => {
+const api = ({ dispatch, getState }) => next => async action => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
 
   const { url, method, data, onSuccess, onError, onLoading } = action.payload;
@@ -25,3 +25,5 @@ export default ({ dispatch, getState }) => next => async action => {
     if (onError) dispatch({ type: onError, payload: error.message });
   }
 };
+
+export default api;
